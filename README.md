@@ -1,137 +1,97 @@
-# 🚀 StoreIt - Modern File Storage Demo
+# StoreIt Frontend - Next.js
 
-> **Built with ❤️ using Cursor AI** | **Frontend Demo** | **Ready for Vercel Deployment**
+This is the frontend application for StoreIt, built with Next.js 15 and designed to work with AWS backend services.
 
-[![Next.js](https://img.shields.io/badge/Next.js-15.0.2-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
-[![React](https://img.shields.io/badge/React-19.0.0-blue?style=for-the-badge&logo=react)](https://reactjs.org/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
-[![TailwindCSS](https://img.shields.io/badge/TailwindCSS-3.4.1-38B2AC?style=for-the-badge&logo=tailwind-css)](https://tailwindcss.com/)
+## Features
 
-## 🌟 What is StoreIt?
+- **Authentication**: AWS Cognito integration
+- **File Management**: Upload, download, delete, and share files
+- **Modern UI**: Built with TailwindCSS and ShadCN/UI
+- **Responsive Design**: Works on desktop, tablet, and mobile
+- **Real-time Updates**: Server-side rendering with Next.js
 
-**StoreIt** is a beautiful, modern file storage interface demo built with cutting-edge web technologies. This project showcases a sleek file management system with drag-and-drop uploads, file previews, and a responsive design that works perfectly on all devices.
+## Setup
 
-### ✨ Demo Features
+### 1. Install Dependencies
 
-- **🎨 Beautiful UI** - Modern design with dark/light mode
-- **📁 File Management** - Upload, organize, and preview files
-- **📱 Responsive Design** - Works perfectly on desktop, tablet, and mobile
-- **⚡ Lightning Fast** - Built with Next.js 15 and Turbopack
-- **🎯 TypeScript** - Type-safe development for better code quality
-- **🎨 TailwindCSS** - Utility-first styling for rapid development
-- **🔍 Smart Search** - Find files quickly with intelligent search
-- **📊 File Analytics** - Track storage usage and file statistics
-
-## 🛠️ Technology Stack
-
-- **Next.js 15** - React framework with App Router
-- **React 19** - Latest React with concurrent features
-- **TypeScript** - Type-safe development
-- **TailwindCSS** - Utility-first CSS framework
-- **ShadCN/UI** - Beautiful, accessible components
-- **Radix UI** - Headless UI primitives
-- **Lucide React** - Beautiful icons
-
-## 🚀 Quick Start
-
-### Prerequisites
-- Node.js 18+ 
-- Git
-
-### 1. Clone & Install
 ```bash
-git clone (https://github.com/pardeep1916P/storeit-frontend)
-cd storeit/frontend
 npm install
 ```
 
-### 2. Development
+### 2. Environment Variables
+
+Copy `env.example` to `.env.local` and fill in your AWS configuration:
+
+```bash
+cp env.example .env.local
+```
+
+Required environment variables:
+- `NEXT_PUBLIC_AWS_REGION`: Your AWS region
+- `NEXT_PUBLIC_USER_POOL_ID`: Cognito User Pool ID
+- `NEXT_PUBLIC_CLIENT_ID`: Cognito Client ID
+- `NEXT_PUBLIC_API_GATEWAY_URL`: API Gateway URL
+
+### 3. Development
+
 ```bash
 npm run dev
 ```
-Open [http://localhost:3000](http://localhost:3000) to see the magic! ✨
 
-### 3. Production Build
+Open [http://localhost:3000](http://localhost:3000) to view the application.
+
+### 4. Build
+
 ```bash
-npm run build:production
-npm run start:production
+npm run build
 ```
 
-## 📊 Performance Optimizations
+## Architecture
 
-- **Bundle Analysis**: `npm run build:analyze`
-- **Type Checking**: `npm run type-check`
-- **Linting**: `npm run lint:fix`
-- **Clean Build**: `npm run clean`
+- **Framework**: Next.js 15 with App Router
+- **Styling**: TailwindCSS with custom design system
+- **UI Components**: ShadCN/UI with Radix UI
+- **Authentication**: AWS Cognito
+- **API**: AWS API Gateway + Lambda
+- **File Storage**: AWS S3
+- **Database**: AWS DynamoDB
 
-### 🎯 **CSS Minification**
-The project includes **fully minified CSS** for optimal performance:
-
-- **File Size Reduction**: ~70% smaller CSS file
-- **Before**: 827 lines with comments and spaces
-- **After**: 1 line of minified CSS
-- **Benefits**: Faster loading, reduced bandwidth, mobile optimized
-
-```css
-/* Original: 827 lines with comments */
-/* Minified: 1 line optimized for production */
-@tailwind base;@tailwind components;@tailwind utilities;@layer base{*{@apply scroll-smooth}body{@apply bg-white text-dark-200 min-h-screen}...
-```
-
-## 🎨 UI/UX Highlights
-
-- **Dark/Light Mode** - Beautiful theme switching
-- **Drag & Drop** - Intuitive file uploads
-- **File Previews** - Instant file viewing
-- **Progress Indicators** - Real-time upload progress
-- **Responsive Design** - Perfect on all devices
-- **Loading States** - Smooth user experience
-
-## 📝 Project Structure
+## File Structure
 
 ```
 frontend/
-├── app/                    # Next.js app router
-│   ├── (auth)/            # Authentication pages
-│   ├── (root)/            # Main application pages
-│   └── layout.tsx         # Root layout
-├── components/             # React components
-│   ├── ui/                # ShadCN/UI components
-│   └── *.tsx             # Custom components
-├── lib/                   # Utilities & services
-├── public/                # Static assets
-└── types/                 # TypeScript definitions
+├── src/
+│   ├── app/              # Next.js app router
+│   ├── components/        # React components
+│   ├── lib/              # Utilities and services
+│   │   ├── actions/      # Server actions
+│   │   └── aws/          # AWS configuration
+│   ├── constants/         # App constants
+│   ├── hooks/            # Custom React hooks
+│   └── types/            # TypeScript types
+├── public/               # Static assets
+└── package.json
 ```
 
-## 🧪 Code Quality
+## Deployment
 
-- **TypeScript** - Compile-time error checking
-- **ESLint** - Code quality enforcement
-- **Prettier** - Consistent code formatting
-- **Next.js Built-in Testing** - Component testing
+This frontend is designed to be deployed on Vercel:
 
-## 🎯 Built with Cursor AI
+1. Connect your GitHub repository to Vercel
+2. Set environment variables in Vercel dashboard
+3. Deploy automatically on push to main branch
 
-This project was developed using **Cursor AI**, demonstrating how modern AI tools can accelerate frontend development. The focus was on:
+## Backend Integration
 
-- **Clean Architecture** - Well-organized component structure
-- **Modern Technologies** - Latest React and Next.js features
-- **Performance** - Optimized for speed and efficiency
-- **User Experience** - Intuitive and beautiful interface
-- **Code Quality** - Type-safe and maintainable code
-- **Optimization** - Minified CSS and production-ready builds
+This frontend works with the AWS backend services:
+- Lambda functions for API endpoints
+- Cognito for authentication
+- S3 for file storage
+- DynamoDB for data persistence
 
-## 📄 License
+## Development Notes
 
-MIT License - feel free to use this project for learning and development!
-
-## 🙏 Acknowledgments
-
-- **Cursor AI** - For enabling rapid development
-- **Next.js Team** - For the amazing React framework
-- **TailwindCSS** - For the utility-first CSS approach
-- **ShadCN** - For beautiful UI components
-
----
-
-**Built with ❤️ using Cursor AI - demonstrating the future of frontend development!**
+- The app uses server actions for API calls
+- Authentication is handled through cookies
+- File uploads use FormData with presigned URLs
+- All API calls include JWT tokens for authentication 
